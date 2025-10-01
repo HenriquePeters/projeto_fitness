@@ -1,5 +1,5 @@
 # Entrar na pasta do projeto
-cd "D:\Atividades Concluidas\ProjetoAlexandre\projeto_fitness"
+cd "D:\Atividades Concluidas\ProjetoAlexandre\projeto_fitness\fitlife_tracker"
 
 # Criar o ambiente virtual
 python -m venv venv
