@@ -1,0 +1,29 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+}
+
+nav {
+    background: #f0f0f0;
+    padding: 10px;
+    border-radius: 8px;
+}
+
+nav a {
+    margin: 0 10px;
+    text-decoration: none;
+    font-weight: bold;
+    color: #333;
+}
+
+nav a:hover {
+    color: #007BFF;
+}
+
+.container {
+    margin-top: 20px;
+}
+
+.flash.success { color: green; }
+.flash.info { color: blue; }
+.flash.danger { color: red; }
