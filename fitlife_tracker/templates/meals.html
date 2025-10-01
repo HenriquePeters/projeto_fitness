@@ -1,16 +1,34 @@
 {% extends "base.html" %}
 {% block content %}
-<h2>Minhas Refeições</h2>
-<a href="{{ url_for('new_meal') }}">➕ Nova Refeição</a>
-<ul>
-    {% for meal in meals %}
-        <li>
-            {{ meal.date.strftime('%d/%m/%Y %H:%M') }} - {{ meal.description }} ({{ meal.calories }} kcal)
-            [<a href="{{ url_for('edit_meal', meal_id=meal.id) }}">Editar</a>] 
-            [<a href="{{ url_for('delete_meal', meal_id=meal.id) }}">Excluir</a>]
-        </li>
-    {% else %}
-        <p>Nenhuma refeição registrada.</p>
-    {% endfor %}
-</ul>
+<div class="d-flex justify-content-between mb-3">
+    <h2>Refeições</h2>
+    <a href="{{ url_for('new_meal') }}" class="btn btn-primary">Nova Refeição</a>
+</div>
+<div class="table-responsive">
+    <table class="table table-hover table-bordered">
+        <thead class="table-light">
+            <tr>
+                <th>Descrição</th>
+                <th>Calorias</th>
+                <th>Data</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for meal in meals %}
+            <tr>
+                <td>{{ meal.description }}</td>
+                <td>{{ meal.calories }}</td>
+                <td>{{ meal.date.strftime('%d/%m/%Y %H:%M') }}</td>
+                <td>
+                    <a href="{{ url_for('edit_meal', meal_id=meal.id) }}" class="btn btn-sm btn-warning">Editar</a>
+                    <a href="{{ url_for('delete_meal', meal_id=meal.id) }}" class="btn btn-sm btn-danger">Excluir</a>
+                </td>
+            </tr>
+            {% else %}
+            <tr><td colspan="4" class="text-center">Nenhuma refeição registrada</td></tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
 {% endblock %}

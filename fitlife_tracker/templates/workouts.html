@@ -1,16 +1,33 @@
 {% extends "base.html" %}
 {% block content %}
-<h2>Meus Treinos</h2>
-<a href="{{ url_for('new_workout') }}">➕ Novo Treino</a>
-<ul>
-    {% for w in workouts %}
-        <li>
-            {{ w.date.strftime('%d/%m/%Y %H:%M') }} - {{ w.exercise }} | {{ w.sets }}x{{ w.reps }} ({{ w.weight }} kg)
-            [<a href="{{ url_for('edit_workout', workout_id=w.id) }}">Editar</a>] 
-            [<a href="{{ url_for('delete_workout', workout_id=w.id) }}">Excluir</a>]
-        </li>
-    {% else %}
-        <p>Nenhum treino registrado.</p>
-    {% endfor %}
-</ul>
+<div class="d-flex justify-content-between mb-3">
+    <h2>Treinos</h2>
+    <a href="{{ url_for('new_workout') }}" class="btn btn-primary">Novo Treino</a>
+</div>
+<div class="table-responsive">
+    <table class="table table-hover table-bordered">
+        <thead class="table-light">
+            <tr>
+                <th>Exercício</th>
+                <th>Séries</th>
+                <th>Repetições</th>
+                <th>Peso (kg)</th>
+                <th>Data</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for w in workouts %}
+            <tr>
+                <td>{{ w.exercise }}</td>
+                <td>{{ w.sets }}</td>
+                <td>{{ w.reps }}</td>
+                <td>{{ w.weight }}</td>
+                <td>{{ w.date.strftime('%d/%m/%Y %H:%M') }}</td>
+            </tr>
+            {% else %}
+            <tr><td colspan="5" class="text-center">Nenhum treino registrado</td></tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
 {% endblock %}
